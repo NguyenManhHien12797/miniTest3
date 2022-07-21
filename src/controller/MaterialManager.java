@@ -3,7 +3,7 @@ package controller;
 import model.CrispyFlour;
 import model.Material;
 import model.Meat;
-import veiw.Client;
+import view.Client;
 
 import java.util.ArrayList;
 import java.util.Scanner;

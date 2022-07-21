@@ -1,16 +1,13 @@
-package veiw;
+package view;
 
 import controller.MaterialManager;
 import model.CrispyFlour;
 import model.Material;
 import model.Meat;
 
-import java.sql.SQLOutput;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.TreeMap;
 
 public class Client {
     private static ArrayList<Material>materials= MaterialManager.materials;
@@ -60,14 +57,17 @@ public class Client {
                     materialManager.addMaterial(addMeat());
                     break;
                 case 4:
-                    materialManager.deleteMaterial(materials);
+                    materialManager.editMaterial(materials);
                     break;
                 case 5:
+                    materialManager.deleteMaterial(materials);
+                    break;
+                case 6:
                     System.out.println("Chênh lệch chiết khấu của sản phẩm ngày hôm nay: "+LocalDate.now() +" theo Id là:");
                     System.out.println(materialManager.getDiscountDifferenceToday(materials));
                     break;
 
-                case 6:
+                case 7:
                     System.out.println("Get out :v :v :v");
                     break;
                 default:
@@ -75,17 +75,18 @@ public class Client {
 
             }
 
-        }while (choice != 6);
+        }while (choice != 7);
 
     }
     public static void displayMenu(){
-        System.out.printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n","Menu",
+        System.out.printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n","Menu",
                 "1. In các sản phẩm hiện có",
                 "2. Thêm sản phẩm CrispyFlour",
                 "3. Thêm sản phẩm Meat",
-                "4. Xóa sản phẩm theo id",
-                "5. In ra chênh lệch chiết khấu sản phẩm",
-                "6. Thoát");
+                "4. Sửa sản phẩm theo Id",
+                "5. Xóa sản phẩm theo id",
+                "6. In ra chênh lệch chiết khấu sản phẩm",
+                "7. Thoát");
     }
 
     public static CrispyFlour addCrispyFlour(){
