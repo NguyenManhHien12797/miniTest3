@@ -39,13 +39,7 @@ public class Client {
 
     }
     public static void main(String[] args) {
-        TreeMap<String,Integer> arr= new TreeMap<>();
-        for(int i= 0; i< 3;i++){
-            String id= "id: "+ materials.get(i).getId();
-            arr.put(id,i);
-        }
 
-        System.out.println(arr);
         MaterialManager materialManager = new MaterialManager();
         Scanner scanner= new Scanner(System.in);
         int choice=-1;

@@ -3,6 +3,12 @@ package model;
 import java.time.LocalDate;
 
 public class CrispyFlour extends Material implements Discount {
+
+    public static final int EXPIRATION_YEAR = 1;
+    public static final double PERCENT_DISCOUNT_1 = 0.4;
+    public static final double PERCENT_DISCOUNT_2 = 0.2;
+    public static final double PERCENT_DISCOUNT_3 = 0.05;
+
     public static void main(String[] args) {
         CrispyFlour crispyFlour= new CrispyFlour(1,"bột chiên1","2022-07-20",100,10);
         System.out.println(crispyFlour.getRealMoney());
@@ -44,7 +50,7 @@ public class CrispyFlour extends Material implements Discount {
     @Override
     public LocalDate getExpiryDate() {
 
-        return  getManufacturingDate().plusYears(1);
+        return  getManufacturingDate().plusYears(EXPIRATION_YEAR);
     }
 
     @Override
@@ -52,12 +58,13 @@ public class CrispyFlour extends Material implements Discount {
         LocalDate localDate= LocalDate.now();
 
         if(getExpiryDate().getMonth().minus(2)== localDate.getMonth()){
-           return (getCost()-(getCost()*40)/100);
+           return (getCost()-getCost()* PERCENT_DISCOUNT_1);
         }else {
             if(getExpiryDate().getMonth().minus(4)== localDate.getMonth()){
-                return (getCost()-(getCost()*20)/100);
+                return (getCost()-getCost()* PERCENT_DISCOUNT_2);
             }
         }
-        return (getCost()-(getCost()*5)/100);
+        return (getCost()-getCost()*PERCENT_DISCOUNT_3);
+
     }
 }

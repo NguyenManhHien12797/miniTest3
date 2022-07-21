@@ -4,6 +4,9 @@ import java.time.LocalDate;
 
 public class Meat extends Material implements Discount{
     public static final int COUNT_THE_EXPIRATION_DATE = 5;
+    public static final int EXPIRATION_DATE = 7;
+    public static final double PERCENT_DISCOUNT_1 = 0.3;
+    public static final double PERCENT_DISCOUNT_2 = 0.1;
     private double weight;
 
     public Meat() {
@@ -40,7 +43,7 @@ public class Meat extends Material implements Discount{
 
     @Override
     public LocalDate getExpiryDate() {
-        return getManufacturingDate().plusDays(7);
+        return getManufacturingDate().plusDays(EXPIRATION_DATE);
     }
 
     @Override
@@ -48,8 +51,8 @@ public class Meat extends Material implements Discount{
         LocalDate localDate= LocalDate.now();
 
         if(getExpiryDate().getDayOfMonth()- localDate.getDayOfMonth()== COUNT_THE_EXPIRATION_DATE){
-            return (getCost()-(getCost()*30)/100);
+            return (getCost()-getCost()* PERCENT_DISCOUNT_1);
         }
-        return (getCost()-(getCost()*10)/100);
+        return (getCost()-getCost()*PERCENT_DISCOUNT_2);
     }
 }
